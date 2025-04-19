@@ -18,9 +18,42 @@
       .brands::-webkit-scrollbar {
         display: none;
       }
+
+      .circle {
+        position: fixed;
+        mix-blend-mode: difference;
+        z-index: 100;
+        width: 100px;
+        height: 100px;
+        pointer-events: none;
+        top: -48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: -48px;
+        transition: transform 0.04s linear;
+      }
+      .cursor {
+        border: 1px #c1c1c1 solid;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: transparent;
+        transition: all 0.3s ease-in-out;
+      }
+      .cursor.active {
+        border: white 1px solid;
+        width: 90px;
+        height: 90px;
+        background-color: white;
+        transition: all 0.3s ease-in-out;
+      }
     </style>
   </head>
-  <body class="font-[Epilogue] text-neutral-900">
+  <body class="font-[Epilogue] text-neutral-900 bg-white">
+    <div id="circle" class="circle">
+      <div id="cursor" class="cursor"></div>
+    </div>
     <nav
       class="w-full h-20 flex justify-between items-center px-10 fixed bg-white z-10">
       <div class="w-10 h-auto text-xl font-semibold">Logo</div>
@@ -58,7 +91,7 @@
         >
       </div>
       <div class="w-full py-10 px-8">
-        <img class=" object-contain" src="img/wlop_pp.png" alt="" />
+        <img class="object-contain" src="img/hero.png" alt="" />
       </div>
     </header>
     <!-- logo brand -->
@@ -67,7 +100,7 @@
         class="brands max-w-full h-24 flex justify-between px-20 max-md:overflow-x-auto scrollbar-hide max-md:overflow-y-hidden max-md:justify-start max-md:px-2 max-lg:px-4">
         <div
           class="h-full w-36 flex items-center justify-center p-8 opacity-70 shrink-0">
-          <img class="w-full object-cover" src="img/google.png" alt="" />
+          <img class="w-full object-cover" src="img/google_m.png" alt="" />
         </div>
         <div
           class="h-full w-36 flex items-center justify-center p-8 opacity-70 shrink-0">
@@ -142,14 +175,11 @@
       <div id="project-grid" class="w-full grid lg:grid-cols-2 gap-6 px-6">
         <div class="project-item w-full flex flex-col">
           <div
-            class="w-full h-[32rem] peer hover:p-4 hover:brightness-[0.4] duration-500">
-            <img
-              src="img/wlop3.jpg"
-              alt=""
-              class="w-full h-full object-cover" />
+            class="w-full cursor-pointer h-[32rem] peer hover:p-4 hover:brightness-[0.4] duration-500">
+            <img src="img/art3.jpg" alt="" class="w-full h-full object-cover" />
           </div>
           <h1
-            class="font-bold mt-64 text-blue-500 opacity-0 absolute text-4xl peer-hover:mt-52 peer-hover:opacity-100 duration-500 pointer-events-none">
+            class="font-bold mt-64 text-white mix-blend-difference opacity-0 absolute text-4xl peer-hover:mt-52 peer-hover:opacity-100 duration-500 pointer-events-none">
             Project Subtitle
           </h1>
           <h1 class="text-xl font-bold mt-6">Project Title</h1>
@@ -157,11 +187,11 @@
         </div>
         <div class="project-item w-full flex flex-col">
           <div
-            class="w-full h-[32rem] peer hover:p-4 hover:brightness-[0.4] duration-500">
-            <img src="img/elop.jpg" alt="" class="w-full h-full object-cover" />
+            class="w-full cursor-pointer h-[32rem] peer hover:p-4 hover:brightness-[0.4] duration-500">
+            <img src="img/art1.jpg" alt="" class="w-full h-full object-cover" />
           </div>
           <h1
-            class="font-bold mt-64 text-blue-500 opacity-0 absolute text-4xl peer-hover:mt-52 peer-hover:opacity-100 duration-500 pointer-events-none">
+            class="font-bold mt-64 text-white mix-blend-difference opacity-0 absolute text-4xl peer-hover:mt-52 peer-hover:opacity-100 duration-500 pointer-events-none">
             Project Subtitle
           </h1>
           <h1 class="text-xl font-bold mt-6">Project Title</h1>
@@ -169,14 +199,11 @@
         </div>
         <div class="project-item w-full flex flex-col">
           <div
-            class="w-full h-[32rem] peer hover:p-4 hover:brightness-[0.4] duration-500">
-            <img
-              src="img/wlop2.jpg"
-              alt=""
-              class="w-full h-full object-cover" />
+            class="w-full cursor-pointer h-[32rem] peer hover:p-4 hover:brightness-[0.4] duration-500">
+            <img src="img/art2.jpg" alt="" class="w-full h-full object-cover" />
           </div>
           <h1
-            class="font-bold mt-64 text-blue-500 opacity-0 absolute text-4xl peer-hover:mt-52 peer-hover:opacity-100 duration-500 pointer-events-none">
+            class="font-bold mt-64 text-white mix-blend-difference opacity-0 absolute text-4xl peer-hover:mt-52 peer-hover:opacity-100 duration-500 pointer-events-none">
             Project Subtitle
           </h1>
           <h1 class="text-xl font-bold mt-6">Project Title</h1>
@@ -188,18 +215,23 @@
     <h1 class="text-3xl font-semibold flex justify-center my-10">
       Testimonial
     </h1>
-    <section class="w-full grid grid-cols-3 my-10 px-6 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1">
+    <section
+      class="w-full grid grid-cols-3 my-10 px-6 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1">
       <div
-        class="group flex flex-col bg-[#F3F4F6] w-full rounded-[32px] justify-between hover:bg-gray-800 transition-all duration-300">
+        class="group cursor-pointer flex flex-col bg-[#F3F4F6] w-full rounded-[32px] justify-between hover:bg-gray-800 transition-all duration-300">
         <div class="flex flex-col px-8 py-8">
-          <i class="fa-solid fa-quote-left text-7xl opacity-20 group-hover:text-white transition-all duration-300"></i>
-          <p class="text-xl mt-8 font-semibold group-hover:text-white transition-all duration-300">roses are red, violets are blue, wanna do something bad, my bubu?</p>
+          <i
+            class="fa-solid fa-quote-left text-7xl opacity-20 group-hover:text-white transition-all duration-300"></i>
+          <p
+            class="text-xl mt-8 font-semibold group-hover:text-white transition-all duration-300">
+            roses are red, violets are blue, wanna do something bad, my bubu?
+          </p>
         </div>
         <div
           class="rounded-tr-[32px] flex items-center mt-4 pl-4 pr-12 py-4 w-[194px] bg-white before:content-[''] before:absolute before:w-8 before:h-8 before:-translate-x-[16px] before:-translate-y-[52px] before:rounded-bl-[32px] before:shadow-[-8px_8px_0_8px_#ffffff] after:content-[''] after:absolute after:w-8 after:h-8 after:translate-x-[178px] after:translate-y-[20px] after:rounded-bl-[32px] after:shadow-[-8px_8px_0_8px_#ffffff]">
           <img
             class="rounded-full h-10 w-10 mr-2 object-cover"
-            src="img/wlop1.jpg"
+            src="img/testimonial.jpg"
             alt="" />
           <!-- </div> -->
           <div class="text-sm">
@@ -209,10 +241,12 @@
         </div>
       </div>
       <div
-        class="group flex flex-col bg-[#F3F4F6] w-full rounded-[32px] justify-between hover:bg-gray-800 transition-all duration-300">
+        class="group cursor-pointer flex flex-col bg-[#F3F4F6] w-full rounded-[32px] justify-between hover:bg-gray-800 transition-all duration-300">
         <div class="flex flex-col px-8 py-8">
-          <i class="fa-solid fa-quote-left text-7xl opacity-20 group-hover:text-white transition-all duration-300"></i>
-          <p class="text-xl mt-8 font-semibold group-hover:text-white transition-all duration-300">
+          <i
+            class="fa-solid fa-quote-left text-7xl opacity-20 group-hover:text-white transition-all duration-300"></i>
+          <p
+            class="text-xl mt-8 font-semibold group-hover:text-white transition-all duration-300">
             roses are red, violets are blue, when you go to bed, i'll be there
             for you.
           </p>
@@ -221,7 +255,7 @@
           class="rounded-tr-[32px] flex items-center mt-4 pl-4 pr-12 py-4 w-[194px] bg-white before:content-[''] before:absolute before:w-8 before:h-8 before:-translate-x-[16px] before:-translate-y-[52px] before:rounded-bl-[32px] before:shadow-[-8px_8px_0_8px_#ffffff] after:content-[''] after:absolute after:w-8 after:h-8 after:translate-x-[178px] after:translate-y-[20px] after:rounded-bl-[32px] after:shadow-[-8px_8px_0_8px_#ffffff]">
           <img
             class="rounded-full h-10 w-10 mr-2 object-cover"
-            src="img/wlop1.jpg"
+            src="img/testimonial.jpg"
             alt="" />
           <!-- </div> -->
           <div class="text-sm">
@@ -231,10 +265,12 @@
         </div>
       </div>
       <div
-        class="group flex flex-col bg-[#F3F4F6] w-full rounded-[32px] justify-between hover:bg-gray-800 transition-all duration-300">
+        class="group cursor-pointer flex flex-col bg-[#F3F4F6] w-full rounded-[32px] justify-between hover:bg-gray-800 transition-all duration-300">
         <div class="flex flex-col px-8 py-8">
-          <i class="fa-solid fa-quote-left text-7xl opacity-20 group-hover:text-white transition-all duration-300"></i>
-          <p class="text-xl mt-8 font-semibold group-hover:text-white transition-all duration-300">
+          <i
+            class="fa-solid fa-quote-left text-7xl opacity-20 group-hover:text-white transition-all duration-300"></i>
+          <p
+            class="text-xl mt-8 font-semibold group-hover:text-white transition-all duration-300">
             roses are red, violets are blue, sugar is sweet, and so are you.
           </p>
         </div>
@@ -242,7 +278,7 @@
           class="rounded-tr-[32px] flex items-center mt-4 pl-4 pr-12 py-4 w-[194px] bg-white before:content-[''] before:absolute before:w-8 before:h-8 before:-translate-x-[16px] before:-translate-y-[52px] before:rounded-bl-[32px] before:shadow-[-8px_8px_0_8px_#ffffff] after:content-[''] after:absolute after:w-8 after:h-8 after:translate-x-[178px] after:translate-y-[20px] after:rounded-bl-[32px] after:shadow-[-8px_8px_0_8px_#ffffff]">
           <img
             class="rounded-full h-10 w-10 mr-2 object-cover"
-            src="img/wlop1.jpg"
+            src="img/testimonial.jpg"
             alt="" />
           <!-- </div> -->
           <div class="text-sm">
@@ -254,7 +290,8 @@
     </section>
 
     <footer class="mt-32 flex items-center flex-col">
-      <h1 class="text-6xl font-black text-center w-[600px] leading-[1.5] max-sm:w-[400px] max-sm:text-4xl max-sm:leading-[1.5] max-md:text-5xl max-md:leading-[1.5]">
+      <h1
+        class="text-6xl font-black text-center w-[600px] leading-[1.5] max-sm:w-[400px] max-sm:text-4xl max-sm:leading-[1.5] max-md:text-5xl max-md:leading-[1.5]">
         Have Project? Let's Work Together!
       </h1>
       <a
@@ -332,5 +369,47 @@
     if (items.length % 2 !== 0) {
       lastItem.classList.add("lg:col-span-2");
     }
+
+    const circle = document.querySelector(".circle");
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    const inertia = 0.12;
+
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animate() {
+      // Gerak perlahan ke arah mouse
+      currentX += (mouseX - currentX) * inertia;
+      currentY += (mouseY - currentY) * inertia;
+
+      // Geser posisi circle
+      circle.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    //cursor hover
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mouseover", function (event) {
+      const cursorType = getComputedStyle(event.target).getPropertyValue(
+        "cursor"
+      );
+
+      if (cursorType === "pointer") {
+        cursor.classList.add("active");
+      }
+    });
+
+    document.addEventListener("mouseout", function (event) {
+      cursor.classList.remove("active");
+    });
   </script>
 </html>
